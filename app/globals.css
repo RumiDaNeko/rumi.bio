@@ -121,3 +121,50 @@
     @apply bg-background text-foreground;
   }
 }
+
+.spaceonresize {
+    margin-bottom: 25px;
+  }
+
+.card-content {
+  height: auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .spaceonresize {
+    margin-bottom: 25px;
+  }
+  .cardbox {
+    flex-direction: column; /* stack vertically */
+    flex-wrap: wrap;
+    gap: 20px;
+    height: auto;
+  }
+  .card-content {
+    height: auto;
+    width: 300px;/* dynamic scaling */
+  }
+}
+
+@media (max-width: 450px) {
+  
+  .cardbox {
+    flex-direction: column; /* stack vertically */
+    flex-wrap: wrap;
+    gap: 20px;
+    height: auto;
+  }
+  .spaceonresize {
+    margin-bottom: 25px;
+  }
+  .card-content {
+    height: auto;
+    width: 300px;/* nearly full width on phones */
+  }
+}
+

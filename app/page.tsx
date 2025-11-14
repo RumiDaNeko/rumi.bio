@@ -14,26 +14,36 @@ import CountUp from '@/components/CountUp'
 import Squares from '@/components/Squares';
 
 import { Leaf } from "lucide-react";
-  
+import { useEffect, useState } from "react";
 
-const menuItems = [
+const menuItems: any[] = [
   { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
   { label: 'Cloudcode', ariaLabel: 'Learn more about cloudcode', link: 'https://cloudcode.site' },
 ];
 
-const socialItems = [
+const socialItems: any[] = [
   { label: 'Discord', link: 'https://discord.gg/BMzQcBG2Cj' },
   { label: 'GitHub', link: 'https://github.com/RumiDaNeko' },
   { label: 'BBB', link: 'https://builtbybit.com/members/harumi.517696/' }
 ];
 
-const carroselItem = [
+const carroselItem: any[] = [
   { image: "https://media.harumi.io.vn/Non%20Transparent.png", text: "Cloudcode"},
   { image: "https://media.harumi.io.vn/IMG_0009.jpeg", text: "Cute, isn't she?"},
   { image: "https://media.harumi.io.vn/IMG_0479.png", text: "Overlix, part-time slave"},
   { image: "https://media.harumi.io.vn/R.jpg", text: "My goofyah university"}
 ]
 export default function Home() {
+
+  const [mwidth, setWidth] = useState(1024); // default safe value
+
+useEffect(() => {
+    const update = () => setWidth(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+  }, []);
+  const isSmall = mwidth < 768;
+  
   return (
 <div>
   <div
@@ -102,7 +112,7 @@ export default function Home() {
   </div>
   <div style={{position: "absolute", top: 0, right: 0, width: "100%", height: '100%', zIndex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', }}> 
     <div style={{ }}>
-      <SpotlightCard className="custom-spotlight-card" spotlightColor="#ec8686">
+      <SpotlightCard className="card-content" spotlightColor="#ec8686">
   <div style={{color: "#fff", display: "flex"}}>
     <img style={{width:"64px", height:"64px", marginRight: "10px"}} src="https://media.harumi.io.vn/b1b309ef51130584278d71550927df9d.webp"></img>
     <div style={{display:"flex", flexDirection:"column"}}>
@@ -152,12 +162,12 @@ export default function Home() {
   text="Statistics" 
   disabled={false} 
   speed={3} 
-  className='text-5xl' 
+  className='text-5xl spaceonresize' 
 />
 </div>
-<div style={{background: '#000', height: "50vh", width: "100%", display: "flex", flexDirection:'row', rowGap:50, justifyContent:"space-evenly", alignItems:'center'}}>
-  <SpotlightCard className="custom-spotlight-card" spotlightColor="#ec8686">
-  <div style={{width: "256px", color: "#fff", display: "flex", flexDirection:"column",alignItems: "center", justifyContent: "space-evenly"}}>
+<div className="cardbox" style={{background: '#000', height: isSmall == true  ? "1550px" : "40vh", width: "100%", display: "flex", flexDirection: isSmall == true  ? "column" : "row", gap:50, justifyContent:"space-evenly", alignItems:'center'}}>
+  <SpotlightCard className="card-content" spotlightColor="#ec8686">
+  <div  className="card-content" style={{height: "auto", width: "auto", color: "#fff", display: "flex", flexDirection:"column",alignItems: "center", justifyContent: "space-evenly"}}>
     <img style={{width:"100px", height:"100px", marginBottom: "10px"}} src="https://media.harumi.io.vn/b1b309ef51130584278d71550927df9d.webp"></img>
     <div style={{display:"flex", flexDirection:"column",alignItems: "center"}}>
      <BlurText text="About me" delay={150} animateBy="words" direction="top" className="text-2xl mb-8"/>
@@ -167,8 +177,8 @@ export default function Home() {
     </div>
   </div>
 </SpotlightCard>
-  <SpotlightCard className="custom-spotlight-card" spotlightColor="#ec8686">
-  <div style={{width: "256px", color: "#fff", display: "flex", flexDirection:"column",alignItems: "center", justifyContent: "space-evenly"}}>
+  <SpotlightCard className="card-content" spotlightColor="#ec8686">
+  <div  className="card-content" style={{height: "auto", width: "auto", color: "#fff", display: "flex", flexDirection:"column",alignItems: "center", justifyContent: "space-evenly"}}>
     <CountUp
   from={0}
   to={18}
@@ -184,8 +194,8 @@ export default function Home() {
     </div>
   </div>
 </SpotlightCard>
-<SpotlightCard className="custom-spotlight-card" spotlightColor="#ec8686">
-  <div style={{width: "256px", color: "#fff", display: "flex", flexDirection:"column",alignItems: "center", justifyContent: "space-evenly"}}>
+<SpotlightCard className="card-content" spotlightColor="#ec8686">
+  <div  className="card-content" style={{height: "auto", width: "auto", color: "#fff", display: "flex", flexDirection:"column",alignItems: "center", justifyContent: "space-evenly"}}>
     <CountUp
   from={0}
   to={20000}
@@ -201,8 +211,8 @@ export default function Home() {
     </div>
   </div>
 </SpotlightCard>
-<SpotlightCard className="custom-spotlight-card" spotlightColor="#ec8686">
-  <div style={{width: "256px", color: "#fff", display: "flex", flexDirection:"column",alignItems: "center", justifyContent: "space-evenly"}}>
+<SpotlightCard className="card-content" spotlightColor="#ec8686">
+  <div  className="card-content" style={{height: "auto", width: "auto", color: "#fff", display: "flex", flexDirection:"column",alignItems: "center", justifyContent: "space-evenly"}}>
     <CountUp
   from={0}
   to={4}
@@ -220,6 +230,18 @@ export default function Home() {
 </SpotlightCard>
 </div>
 <div style={{background:"#000", width:"100%", height:"75vh"}}>
+  <div style={{zIndex: 1}}>
+     <GradualBlur
+    target="parent"
+    position="top"
+    height="6rem"
+    strength={2}
+    divCount={5}
+    curve="bezier"
+    exponential={true}
+    opacity={1}
+  />
+  </div>
          <Squares 
 speed={0.5} 
 squareSize={40}
