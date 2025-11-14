@@ -43,7 +43,24 @@ useEffect(() => {
     window.addEventListener("resize", update);
   }, []);
   const isSmall = mwidth < 768;
-  
+ 
+ useEffect(() => {
+  let song = new Audio("music.mp3")
+  song.muted = true
+  document.getElementById("blur").style.pointerEvents = "auto"
+  document.getElementById("blur").style.backdropFilter = "blur(5px)";
+  document.getElementById("blur").style.zIndex = 10000
+      document.getElementById("blur").style.WebkitBackdropFilter = "blur(5px)";
+  document.addEventListener('click', () => {
+    song.muted = false
+    document.getElementById("blur").style.backdropFilter = "none";  
+    document.getElementById("blur").style.pointerEvents = "none"
+      document.getElementById("blur").style.WebkitBackdropFilter = "none";
+      document.getElementById("blur").style.zIndex = 9998
+     song.play()
+    document.removeEventListener("click", () =>{})
+  });
+ },[])
   return (
 <div>
   <div
