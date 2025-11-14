@@ -45,7 +45,7 @@ useEffect(() => {
   const isSmall = mwidth < 768;
  
  useEffect(() => {
-  let song = new Audio("music.mp3")
+  let song = new Audio("https://sbucket.harumi.io.vn/music.mp3")
   song.muted = true
   document.getElementById("blur").style.pointerEvents = "auto"
   document.getElementById("blur").style.backdropFilter = "blur(5px)";
