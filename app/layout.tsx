@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Its rumi!",
-  description: "Rumi's home page - all in react and nextjs",
+  title: "Rumi // Cloudcode",
+  description: "Rumi's cybersecurity portfolio and Cloudcode home base.",
 };
 
 export default function RootLayout({
